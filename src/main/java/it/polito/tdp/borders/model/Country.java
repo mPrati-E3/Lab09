@@ -1,5 +1,6 @@
 package it.polito.tdp.borders.model;
 
+//javabean che descrive lo stato
 public class Country {
 	
 	private String StateAbb;
@@ -30,6 +31,13 @@ public class Country {
 		StateAbb = stateAbb;
 		CCode = cCode;
 		StateNme = stateNme;
+	}
+	
+	public Country() {
+		super();
+		StateAbb = "";
+		CCode = 0;
+		StateNme = "";
 	}
 	
 	@Override

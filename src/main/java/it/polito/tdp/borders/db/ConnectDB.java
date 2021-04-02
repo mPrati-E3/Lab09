@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+//classe dedicata solamente ad effettuare la connessione con il db
 public class ConnectDB {
 
 	private static final String jdbcURL = "jdbc:mysql://localhost/countries";
