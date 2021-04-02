@@ -1,15 +1,16 @@
 package it.polito.tdp.borders;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.borders.model.Country;
 import it.polito.tdp.borders.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
 
 public class FXMLController {
 	
@@ -22,13 +23,13 @@ public class FXMLController {
     private URL location;
 
     @FXML
-    private HBox dropAnno;
+    private ChoiceBox<Integer> dropAnno;
 
     @FXML
     private Button btnCalcolaConfini;
 
     @FXML
-    private ChoiceBox<?> dropStato;
+    private ChoiceBox<String> dropStato;
 
     @FXML
     private Button btnTrovaTuttiVicini;
@@ -58,5 +59,17 @@ public class FXMLController {
     
     public void setModel (Model m) {
     	this.model=m;
+    	
+    	for (int i=1816; i<=2016; i++) {
+    		dropAnno.getItems().add(i);
+    	}
+    	dropAnno.setValue(1816);
+    	
+    	List<Country> C = this.model.getAllCountry();
+    	for (Country c : C) {
+    		dropStato.getItems().add(c.getStateNme());
+    	}
+    	dropStato.setValue(C.get(0).getStateNme());
+    	
     }
 }

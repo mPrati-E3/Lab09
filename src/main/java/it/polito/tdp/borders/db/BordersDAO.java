@@ -15,6 +15,7 @@ public class BordersDAO {
 	public List<Country> loadAllCountries() {
 
 		String sql = "SELECT ccode, StateAbb, StateNme FROM country ORDER BY StateAbb";
+		
 		List<Country> result = new ArrayList<Country>();
 		
 		try {
@@ -23,7 +24,15 @@ public class BordersDAO {
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-				System.out.format("%d %s %s\n", rs.getInt("ccode"), rs.getString("StateAbb"), rs.getString("StateNme"));
+				
+				Country c = new Country (
+						rs.getString("StateAbb"), 
+						rs.getInt("ccode"),  
+						rs.getString("StateNme"));
+				
+				result.add(c);
+				
+				
 			}
 			
 			conn.close();
